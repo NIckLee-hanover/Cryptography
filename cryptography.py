@@ -39,7 +39,7 @@ def encrypt(m,k):
         else: 
             letter += 1
         new = (keyp+messagep)
-        if new > 85:
+        if new >= 85:
             new = new - 85
         output.append(chars[new])
     output = ''.join(output)
