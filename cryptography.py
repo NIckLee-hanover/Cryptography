@@ -13,8 +13,8 @@ Lorem ipsum
 """
 import string
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
-message = input('Message: ')
-key = input('Key: ')
+message = ''
+key = ''
 output = list()
 keyp = 0
 messagep = -1
@@ -59,35 +59,31 @@ def decrypt(m,k):
             if keyp == len(chars):
                 break
             keyp += 1
-        if letter == len(k):
-            break
+        if letter == (len(k)-1):
+            letter = 0 
+        else:
+            letter += 1
+        new = (messagep-keyp)
+        output.append(chars[new])
     output = ''.join(output)
     print(output)
-    
- 
-encrypt(message, key)
+
 #decrypt('elmp FGsl/IameDot9', 'hello worldz!')
 
+start = input('Enter e to encrypt, d to decrypt, or q to quit:') 
+if start == 'e' or 'd' or 'q':
+    if start == 'e':
+        message = input("Message: ")
+        key = input("Key: ")
+        encrypt(message, key)
+    elif start == 'd':
+        message = input("Message: ")
+        key = input("Key: ")
+        decrypt(message, key)
+    elif start == 'q':
+        print('Goodbye!')
+    else:
+        print("Did not understand command, try again.")
+        enter()
 
-"""
 
-def enter():
-    global message, key
-    start = input('Enter e to encrypt, d to decrypt, or q to quit:') 
-    if start == 'e' or 'd' or 'q':
-        if start == 'e':
-            message = input("Message: ")
-            key = input("Key: ")
-        elif start == 'd':
-            message = input("Message: ")
-            key = input("Key: ")
-        elif start == 'q':
-            print('Goodbye!')
-            #break
-            
-        else:
-            print("Did not understand command, try again.")
-            enter()
-
-enter()
-"""
