@@ -27,7 +27,7 @@ def encrypt(m,k):
         keyp = 0
         new = 0
         while m[i] != chars[messagep]:
-            if messagep == len(chars):
+            if messagep == 84:
                 break
             messagep += 1
         while k[letter] != chars[keyp]:
@@ -75,10 +75,12 @@ def enter():
             message = input("Message: ")
             key = input("Key: ")
             encrypt(message, key)
+            enter()
         elif start == 'd':
             message = input("Message: ")
             key = input("Key: ")
             decrypt(message, key)
+            enter()
         elif start == 'q':
             print('Goodbye!')
         else:
