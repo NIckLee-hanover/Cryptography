@@ -1,7 +1,7 @@
 """
 cryptography.py
 Author: Nick Lee
-Credit: none yet
+Credit: overflow for one or two syntax corrections
 
 Assignment: Cryptography
 
