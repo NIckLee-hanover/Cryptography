@@ -69,21 +69,22 @@ def decrypt(m,k):
     print(output)
 
 #decrypt('elmp FGsl/IameDot9', 'hello worldz!')
+def enter():
+    global message, key
+    start = input('Enter e to encrypt, d to decrypt, or q to quit:') 
+    if start == 'e' or 'd' or 'q':
+        if start == 'e':
+            message = input("Message: ")
+            key = input("Key: ")
+            encrypt(message, key)
+        elif start == 'd':
+            message = input("Message: ")
+            key = input("Key: ")
+            decrypt(message, key)
+        elif start == 'q':
+            print('Goodbye!')
+        else:
+            print("Did not understand command, try again.")
+            enter()
 
-start = input('Enter e to encrypt, d to decrypt, or q to quit:') 
-if start == 'e' or 'd' or 'q':
-    if start == 'e':
-        message = input("Message: ")
-        key = input("Key: ")
-        encrypt(message, key)
-    elif start == 'd':
-        message = input("Message: ")
-        key = input("Key: ")
-        decrypt(message, key)
-    elif start == 'q':
-        print('Goodbye!')
-    else:
-        print("Did not understand command, try again.")
-        enter()
-
-
+enter()
