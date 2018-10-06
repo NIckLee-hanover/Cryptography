@@ -8,61 +8,65 @@ Assignment: Cryptography
 Write and submit a program that encrypts and decrypts user data.
 
 See the detailed requirements at https://github.com/HHS-IntroProgramming/Cryptography/blob/master/README.md
+Two plus two = Five
+Lorem ipsum
 """
 import string
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
-message = 'hello world'
-key = 'hi'
+message = input('Message: ')
+key = input('Key: ')
 output = list()
 keyp = 0
 messagep = -1
 letter = 0
+new = 0
 def encrypt(m,k):
-    global chars, keyp, messagep, letter, output
+    global chars, keyp, messagep, letter, output, new
     for i in range(len(m)):
         messagep = 0
         keyp = 0
+        new = 0
+        while m[i] != chars[messagep]:
+            if messagep == len(chars):
+                break
+            messagep += 1
+        while k[letter] != chars[keyp]:
+            if keyp == len(chars):
+                break
+            keyp += 1
         if letter == (len(k)-1):
             letter = 0
         else: 
             letter += 1
-        while m[i] != chars[messagep] or i == len(m):
-            messagep += 1
-        for j in range(len(chars)):
-            if k[letter] == chars[j]:
-                break
-            keyp += 1
-        if (keyp+messagep) >= len(chars):
-            output.append(chars[(keyp+messagep)-len(chars)])
-        else:
-            output.append(chars[keyp+messagep])
+        new = (keyp+messagep)
+        if new > 85:
+            new = new - 85
+        output.append(chars[new])
     output = ''.join(output)
     print(output)
 def decrypt(m,k):
-    global chars, keyp, messagep, letter, output
+    global chars, keyp, messagep, letter, output, new
+    output = list()
     for i in range(len(m)):
         messagep = 0
         keyp = 0
-        if letter == (len(k)-1):
-            letter = 0
-        else:
-            letter += 1
-        while m[i] != chars[messagep] or i == len(m):
+        new = 0
+        while m[i] != chars[messagep]:
+            if messagep == len(chars):
+                break
             messagep += 1
-        for j in range(len(chars)):
-            if k[letter] == chars[j]:
+        while k[letter] != chars[keyp]:
+            if keyp == len(chars):
                 break
             keyp += 1
-        if (keyp+messagep) >= len(chars):
-            output.append(chars[(messagep-keyp)-len(chars)])
-        else:
-            output.append(chars[messagep-keyp])
+        if letter == len(k):
+            break
     output = ''.join(output)
     print(output)
     
  
-encrypt('aabbajsba;jbfasdf!', 'hello worldz!')
-decrypt('elmp FGsl/IameDot9', 'hello worldz!')
+encrypt(message, key)
+#decrypt('elmp FGsl/IameDot9', 'hello worldz!')
 
 
 """
