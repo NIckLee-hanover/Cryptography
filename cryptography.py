@@ -67,11 +67,9 @@ def decrypt(m,k):
         output.append(chars[new])
     output = ''.join(output)
     print(output)
-
-#decrypt('elmp FGsl/IameDot9', 'hello worldz!')
 def enter():
     global message, key
-    start = input('Enter e to encrypt, d to decrypt, or q to quit:') 
+    start = input('Enter e to encrypt, d to decrypt, or q to quit: ') 
     if start == 'e' or 'd' or 'q':
         if start == 'e':
             message = input("Message: ")
