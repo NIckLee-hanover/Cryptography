@@ -22,6 +22,7 @@ letter = 0
 new = 0
 def encrypt(m,k):
     global chars, keyp, messagep, letter, output, new
+    output = list()
     for i in range(len(m)):
         messagep = 0
         keyp = 0
