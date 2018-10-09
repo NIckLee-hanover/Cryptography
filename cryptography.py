@@ -15,6 +15,7 @@ import string
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
 message = ''
 key = ''
+start = ''
 output = list()
 keyp = 0
 messagep = -1
@@ -68,24 +69,23 @@ def decrypt(m,k):
         output.append(chars[new])
     output = ''.join(output)
     print(output)
-def enter():
-    global message, key
-    start = input('Enter e to encrypt, d to decrypt, or q to quit: ') 
-    if start == 'e' or 'd' or 'q':
-        if start == 'e':
-            message = input("Message: ")
-            key = input("Key: ")
-            encrypt(message, key)
-            enter()
-        elif start == 'd':
-            message = input("Message: ")
-            key = input("Key: ")
-            decrypt(message, key)
-            enter()
-        elif start == 'q':
-            print('Goodbye!')
-        else:
-            print("Did not understand command, try again.")
-            enter()
+    
+while start != 'q':
+    start = input('Enter e to encrypt, d to decrypt, or q to quit: ')
+    if start == 'e':    
+        message = input("Message: ")
+        key = input("Key: ")
+        encrypt(message, key)
+    elif start == 'd':
+        message = input("Message: ")
+        key = input("Key: ")
+        decrypt(message, key)
+    elif start == 'q':
+        print('Goodbye!')
+    else:
+        print("Did not understand command, try again.")
 
-enter()
+
+
+
+
