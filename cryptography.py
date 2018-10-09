@@ -34,6 +34,7 @@ def encrypt(m,k):
             messagep += 1
         while k[letter] != chars[keyp]:
             if keyp == len(chars):
+                keyp = 0
                 break
             keyp += 1
         if letter == (len(k)-1):
