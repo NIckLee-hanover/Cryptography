@@ -1,7 +1,7 @@
 """
 cryptography.py
 Author: Nick Lee
-Credit: overflow for one or two syntax corrections
+Credit: overflow for a few syntax corrections
 
 Assignment: Cryptography
 
@@ -69,7 +69,6 @@ def decrypt(m,k):
         output.append(chars[new])
     output = ''.join(output)
     print(output)
-    
 while start != 'q':
     start = input('Enter e to encrypt, d to decrypt, or q to quit: ')
     if start == 'e':    
