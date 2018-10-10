@@ -1,7 +1,7 @@
 """
 cryptography.py
 Author: Nick Lee
-Credit: overflow for a few syntax corrections
+Credit: overflow for one or two syntax corrections
 
 Assignment: Cryptography
 
@@ -15,7 +15,6 @@ import string
 chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,:;'\"/\\<>(){}[]-=_+?!"
 message = ''
 key = ''
-start = ''
 output = list()
 keyp = 0
 messagep = -1
@@ -24,6 +23,7 @@ new = 0
 def encrypt(m,k):
     global chars, keyp, messagep, letter, output, new
     output = list()
+    letter = 0
     for i in range(len(m)):
         messagep = 0
         keyp = 0
@@ -34,7 +34,6 @@ def encrypt(m,k):
             messagep += 1
         while k[letter] != chars[keyp]:
             if keyp == len(chars):
-                keyp = 0
                 break
             keyp += 1
         if letter == (len(k)-1):
@@ -70,22 +69,27 @@ def decrypt(m,k):
         output.append(chars[new])
     output = ''.join(output)
     print(output)
-while start != 'q':
-    start = input('Enter e to encrypt, d to decrypt, or q to quit: ')
-    if start == 'e':    
-        message = input("Message: ")
-        key = input("Key: ")
-        encrypt(message, key)
-    elif start == 'd':
-        message = input("Message: ")
-        key = input("Key: ")
-        decrypt(message, key)
-    elif start == 'q':
-        print('Goodbye!')
-    else:
-        print("Did not understand command, try again.")
 
 
 
+def enter():
+    global message, key
+    start = input('Enter e to encrypt, d to decrypt, or q to quit: ') 
+    if start == 'e' or 'd' or 'q':
+        if start == 'e':
+            message = input("Message: ")
+            key = input("Key: ")
+            encrypt(message, key)
+            enter()
+        elif start == 'd':
+            message = input("Message: ")
+            key = input("Key: ")
+            decrypt(message, key)
+            enter()
+        elif start == 'q':
+            print('Goodbye!')
+        else:
+            print("Did not understand command, try again.")
+            enter()
 
-
+enter()
