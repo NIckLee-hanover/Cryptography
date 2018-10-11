@@ -49,6 +49,7 @@ def encrypt(m,k):
 def decrypt(m,k):
     global chars, keyp, messagep, letter, output, new
     output = list()
+    letter = 0
     for i in range(len(m)):
         messagep = 0
         keyp = 0
